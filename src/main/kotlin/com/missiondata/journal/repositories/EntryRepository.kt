@@ -7,4 +7,5 @@ interface EntryRepository {
     fun findById(id: Long): Entry?
 	fun findByJournalId(journalId: Long, entryId: Long): List<Entry>
     fun save(user: Entry): Entry
+	fun delete(journalId: Long, entryId: Long): Boolean
 }
