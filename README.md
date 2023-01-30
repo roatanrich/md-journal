@@ -21,11 +21,11 @@ HyperSQL Database
 * Packaging: Jar
 * Java: 17
 
-#Loading the Project
+Loading the Project
 
 Using Eclipse, select Import Maven Project and select the top level project folder from the Git Clone
 
-#Building the Project
+Building the Project
 
 From within the project window in Eclipse, right click on the project and select Run As | Maven Install
 
