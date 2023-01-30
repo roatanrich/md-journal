@@ -19,7 +19,7 @@ HyperSQL Database
 * Name: journal
 * Description: REST Api for Journal project
 * Packaging: Jar
-* Java: 11
+* Java: 17
 
 ##Loading the Project
 
