@@ -12,6 +12,7 @@ import com.missiondata.journal.repositories.JournalRepository
 import com.missiondata.journal.repositories.EntryRepository
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.PatchMapping
 
 @RestController
 @RequestMapping("/api/journals")
@@ -35,6 +36,12 @@ class JournalController(private val journalRepository: JournalRepository, privat
     @PostMapping("/{journalId}/entries")
     fun saveEntry(@RequestBody entity: Entry) = entryRepository.save(entity)
 
+	@PatchMapping
+    fun patchJournal(@RequestBody entity: Journal) = journalRepository.save(entity)
+
+	@PatchMapping("/{journalId}/entries")
+    fun patchEntry(@RequestBody entity: Entry) = entryRepository.save(entity)
+		
     @PutMapping
     fun updateJournal(@RequestBody entity: Journal) = journalRepository.save(entity)
 	

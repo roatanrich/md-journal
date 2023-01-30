@@ -21,34 +21,76 @@ HyperSQL Database
 * Packaging: Jar
 * Java: 11
 
-Using Eclipse, select Import Maven Project and select the top level project from the Git Clone.
+##Loading the Project
 
+Using Eclipse, select Import Maven Project and select the top level project folder from the Git Clone
 
+##Building the Project
 
-Put together a small microservice that manages multiple journals via a RESTful API. Please don’t spend more than an hour and 15 minutes on this project. We’re much more interested in your approach than a polished solution. Partial solutions are welcome and expected. 
-● Develop in a private repository and share the link with us (github, gitlab)
-	○ give us multiple commits so we can watch the project grow
-● Implement in Kotlin
-● Include a README.md for setup and deployment
-	○ Include sample interactions
-	○ Include a quick summary describing the tools you used to exercise the API endpoints
-● Make it easy to deploy and run
-● RESTful interface
-○ CRUD for a Journal e.g. `{ "name": "My Awesome Journal" }`
-■ POST GET /journals
-■ GET PUT DELETE /journals/{journal}
-○ CRUD for a Journal's entries `"Hi welcome to my journal…."`
-■ POST GET /journals/{journal}/entries e.g.
-■ GET PUT DELETE /journals/{journal}/entries/{entry} or /entries/{entry}
-● Entries are plain text
-● Transient in-memory persistence is fine
-● Optional (any from the following, none are required)
-○ What's your evaluation of this exercise? Is it a reasonable and valuable skills test? Like it,
-hate it?
-○ Include a short writeup for a QA engineer to use for testing (either manually or to set up
-automated testing)
-○ Briefly describe how you'd accomplish this in another tech stack (Node, Laravel, AWS Lambdas,
-C#/.NET Core, etc…)
-○ Persist to storage via DB, etc to survive restarts
-○ Simple frontend for viewing existing journals and entries
-○ Surprise us
+From within the project window in Eclipse, right click on the project and select Run As | Maven Install
+
+# Sample JSON
+
+Use the following JSON sample for testing APIs in Insomnia or Postman
+
+## Journal JSON
+
+```bash
+{
+  id: 0,
+  title: "My trip to France"
+}
+```
+
+## Entry JSON
+
+```bash
+{
+  id: 0,
+  journalId: 0
+  comments: "The Eiffel tower was the highlight"
+}
+```
+
+## List of Entries JSON
+
+```bash
+[
+ {
+  id: 0,
+  journalId: 0
+  comments: "The Eiffel tower was the highlight"
+ },
+ {
+  id: 1,
+  journalId: 0
+  comments: "The Metro System was very clean"
+ },
+ {
+  id: 2,
+  journalId: 0
+  comments: "Dinner was fantastic"
+ }  
+]
+```
+
+#API Specification
+
+```bash
+Journal
+* GET - http://localhost/api/journals/{journalId}
+* GET (All) - http://localhost/api/journals
+* POST - http://localhost/api/journals
+* PATCH - http://localhost/api/journals
+* PUT - http://localhost/api/journals
+* DELETE - http://localhost/api/journals/{journalId}
+
+Entry
+* GET - http://localhost/api/journals/{journalId}/entries/{entryId}
+* GET (All) - http://localhost/api/journals/{journalId}/entries
+* POST - http://localhost/api/journals/{journalId}/entries
+* PATCH - http://localhost/api/journals/{journalId}/entries
+* PUT - http://localhost/api/journals/{journalId}/entries
+* DELETE - http://localhost/api/journals/{journalId}/entries/{entryId}
+
+```
