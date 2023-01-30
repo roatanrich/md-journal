@@ -25,6 +25,11 @@ class JournalRepositoryImpl : JournalRepository {
         })
     }
 
+	override fun delete(journalId: Long): Boolean {
+        jdbcTemplate.update("DELETE FROM journals WHERE id = " + journalId)
+        return true
+    }
+	
     override fun save(entity: Journal): Journal {
         jdbcTemplate.update("INSERT INTO journals (id, title) VALUES (?, ?, ?)", entity.id, entity.title)
         return entity

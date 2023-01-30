@@ -36,6 +36,11 @@ class EntryRepositoryImpl : EntryRepository {
 		return listOf()
     }
 
+	override fun delete(journalId: Long, entryId: Long): Boolean {
+        jdbcTemplate.update("DELETE FROM entries WHERE id = " + entryId)
+        return true
+    }
+	
     override fun save(entity: Entry): Entry {
         jdbcTemplate.update("INSERT INTO entries (id, journalId, comments, createdDate, updatedDate, deleteddDate) VALUES (?, ?, ?)", entity.id, entity.journalId, entity.comments, entity.createdDate, entity.updatedDate, entity.deletedDate)
         return entity
