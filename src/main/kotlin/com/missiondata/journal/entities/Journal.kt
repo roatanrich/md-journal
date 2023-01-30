@@ -11,7 +11,5 @@ import java.util.Calendar
 class Journal(
   @Id @GeneratedValue(strategy = GenerationType.AUTO)
   var id: Long = 0,
-  var createdDate: Date = Date(),
-  var title: String = "",
-  var comments: String = ""
+  var title: String = ""  
 )

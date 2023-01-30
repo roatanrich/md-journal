@@ -1,4 +1,4 @@
-package com.missiondata.journal
+package com.missiondata.journal.repositories
 
 import com.missiondata.journal.entities.Journal
 

@@ -7,17 +7,37 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.GetMapping
 import com.missiondata.journal.entities.Journal
+import com.missiondata.journal.repositories.JournalRepository
+import com.missiondata.journal.repositories.EntryRepository
 
 @RestController
 @RequestMapping("/api/journals")
-class JournalController(private val repository: JournalRepository) {
+class JournalController(private val journalRepository: JournalRepository, private val entryRepository: EntryRepository) {
+
     @GetMapping
-    fun findAll() = repository.findAll()
+    fun findAllJournals() = journalRepository.findAll()
+	
+    @GetMapping("/{journalId}/entries")
+    fun findAllEntries() = entryRepository.findAll()
 
-    @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long) = repository.findById(id)
+    @GetMapping("/{journalId}")
+    fun findJournalById(@PathVariable journalId: Long) = journalRepository.findById(journalId)
 
-    @PostMapping
-    fun save(@RequestBody entity: Journal) = repository.save(entity)
+    @GetMapping("/{journalId}/entries/{entryId}")
+    fun findEntryById(@PathVariable journalId: Long, @PathVariable entryId: Long) {
+		entryRepository.findByJournalId(journalId, entryId)
+	} 
+
+
+//    @PostMapping
+//    fun save(@RequestBody entity: Journal) = repository.save(entity)
+//	
+//    @DeleteMapping
+//    fun save(@RequestBody entity: Journal) = repository.save(entity)
+//
+//	
+//    @PostMapping
+//    fun save(@RequestBody entity: Journal) = repository.save(entity)
+
 }
 

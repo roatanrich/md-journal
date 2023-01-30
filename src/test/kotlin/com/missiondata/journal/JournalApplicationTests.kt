@@ -12,8 +12,8 @@ class JournalApplicationTests {
 
 
 	@Test
-	fun testGetCall() {
-		val url = URL("https://example.com/api/get")
+	fun getJournalListTest() {
+		val url = URL("https://localhost/api/journals")
 		val connection = url.openConnection() as HttpURLConnection
 		connection.requestMethod = "GET"
 
@@ -22,11 +22,31 @@ class JournalApplicationTests {
 	}
 
 	@Test
-	fun testPostCall() {
-		val url = URL("https://example.com/api/post")
+	fun postJournalTest() {
+		val url = URL("https://localhost/api/journals")
 		val connection = url.openConnection() as HttpURLConnection
 		connection.requestMethod = "POST"
 		connection.doOutput = true
+
+		val responseCode = connection.responseCode
+		assertEquals(200, responseCode)
+	}
+
+	@Test
+	fun getEntryListTest() {
+		val url = URL("https://localhost/api/journals/{id}/entries")
+		val connection = url.openConnection() as HttpURLConnection
+		connection.requestMethod = "GET"
+
+		val responseCode = connection.responseCode
+		assertEquals(200, responseCode)
+	}
+		
+	@Test
+	fun getEntryItemTest() {
+		val url = URL("https://localhost/api/journals/{id}/entries/{id}")
+		val connection = url.openConnection() as HttpURLConnection
+		connection.requestMethod = "GET"
 
 		val responseCode = connection.responseCode
 		assertEquals(200, responseCode)
