@@ -5,7 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate
 import com.missiondata.journal.entities.Entry
 import org.springframework.jdbc.core.RowMapper
 import com.missiondata.journal.repositories.EntryRepository
+import org.springframework.stereotype.Repository
 
+@Repository
 class EntryRepositoryImpl : EntryRepository {
     private val jdbcTemplate = JdbcTemplate(DataSourceBuilder.create().url("jdbc:hsqldb:mem:testdb").build())
 
