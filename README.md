@@ -1,5 +1,7 @@
 # Mission Data Coding Exercise
 
+[![CodeQL](https://github.com/roatanrich/md-journal/actions/workflows/codeql.yml/badge.svg)](https://github.com/roatanrich/md-journal/actions/workflows/codeql.yml)
+
 Start with [Spring Initializr](https://start.spring.io/)
 * * Maven * for Project
 * * Kotlin * for Language
